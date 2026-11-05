@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- テスト公開用：検索エンジンにインデックスさせない -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>【C案-v3】いいお通じは、ハッピーに通ず。｜おなかにやさしい便秘薬 3AマグネシアS｜フジックス株式会社</title>
+<meta name="description" content="おなかが痛くなりにくい・クセになりにくい非刺激性の便秘薬「3AマグネシアS」。活性酸化マグネシウムが水分の力で便をやわらかくし、自然なお通じをサポートします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== v3 ワイヤー（グレートーン） ===== */
+:root{
+  --ink:#333333;
+  --dark:#4d4d4d;        /* ボタン・強調 */
+  --muted:#666666;
+  --line:#dddddd;
+  --bg-1:#f2f2f2;
+  --bg-2:#e6e6e6;
+  --bg-3:#f5f5f5;
+  --chip:#e6e6e6;
+  --footer:#cccccc;
+  --radius:20px;
+  --col:480px;
+  --font:"Noto Sans JP",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#eeeeee;font-family:var(--font);color:var(--ink);font-weight:500;line-height:1.8;letter-spacing:.04em;line-break:strict;overflow-wrap:anywhere}
+img{max-width:100%;height:auto;display:block}
+.g{filter:grayscale(1)}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #888;outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ===== 中央カラム ===== */
+.frame{position:relative;z-index:1;max-width:var(--col);margin:0 auto;background:#fff;min-height:100vh;overflow:clip;padding-top:56px;box-shadow:0 0 0 1px var(--line)}
+
+/* ===== Header（固定） ===== */
+.header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:var(--col);height:56px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 16px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+.header__logo{width:150px}
+.header__btn{display:flex;align-items:center;gap:8px}
+.header__buy{font-size:14px;font-weight:700;color:#fff;background:var(--dark);border:1.5px solid var(--dark);border-radius:99px;padding:6px 14px;text-decoration:none;line-height:1.4;transition:background .3s,color .3s}
+.menu-toggle{width:40px;height:40px;border:0;background:none;padding:6px;cursor:pointer;color:var(--ink)}
+.menu-toggle span{display:block;height:2.6px;background:currentColor;border-radius:2px;margin:6px 0;transition:transform .3s,opacity .3s}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8.6px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8.6px) rotate(-45deg)}
+.nav{position:absolute;top:56px;left:0;right:0;background:#fff;padding:8px 24px 28px;border-radius:0 0 var(--radius) var(--radius);box-shadow:0 20px 30px rgba(0,0,0,.12);display:none}
+.nav.is-open{display:block}
+.nav a{display:flex;justify-content:space-between;padding:13px 4px;border-bottom:1px dashed var(--line);text-decoration:none;font-weight:700}
+.nav a::after{content:"›";color:var(--muted)}
+.nav__sns{display:flex;gap:12px;justify-content:center;margin-top:20px}
+.nav__sns a,.side__sns a{width:44px;height:44px;border:0;padding:0;border-radius:50%;background:var(--chip);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--muted)}
+.nav__sns a::after{display:none}
+
+/* ===== PC 左右サイド（追従） ===== */
+.side{display:none}
+@media (min-width:1024px){
+  .side{display:flex;position:fixed;top:0;bottom:0;width:calc((100% - var(--col)) / 2);z-index:0;flex-direction:column;align-items:center;justify-content:center;padding:40px clamp(24px,4vw,64px)}
+  .side--left{left:0}
+  .side--right{right:0;text-align:center}
+  .side__logo{width:min(218px,100%);margin-bottom:32px}
+  .side__nav{width:min(260px,100%);display:grid;gap:2px}
+  .side__nav a{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-radius:99px;text-decoration:none;font-weight:700;font-size:15px;transition:background .3s}
+  .side__nav a::after{content:"›";color:var(--muted)}
+  .side__nav a:hover,.side__nav a.is-current{background:#fff}
+  .side__sns{display:flex;gap:12px;margin-top:28px}
+  .side__badges{display:flex;justify-content:center;align-items:center;gap:6px;font-size:13px;font-weight:700}
+  .side__ttl{font-size:clamp(22px,1.9vw,28px);font-weight:900;line-height:1.45;margin-top:12px}
+  .side__name{width:min(240px,100%);margin:18px auto 0}
+  .side__pkg{width:min(320px,100%);margin:6px auto 0}
+  .side__tag{display:inline-block;margin-top:8px;border:1px solid var(--ink);font-size:12px;padding:0 10px;border-radius:4px;background:#fff}
+}
+
+/* ===== 共通 ===== */
+.sec{padding:56px 20px}
+section[id]{scroll-margin-top:56px}
+.bg-1{background:var(--bg-1)}
+.bg-2{background:var(--bg-2)}
+.bg-3{background:var(--bg-3)}
+.eyebrow{display:block;text-align:center;font-size:13px;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-bottom:20px}
+.ttl{text-align:center;font-size:clamp(19px,6vw,24px);font-weight:900;line-height:1.4;letter-spacing:.04em}
+.lead{text-align:center;font-size:clamp(13px,3.75vw,15px);margin-top:20px;letter-spacing:.02em}
+.lead b{font-weight:700}
+br.sp{display:none}
+.em-act{font-style:normal;font-size:1.7em;font-weight:700;line-height:1;vertical-align:-.08em;margin:0 1px}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+.tag-act{display:inline-block;border:1.5px solid var(--ink);border-radius:99px;padding:0 10px;background:#fff;font-weight:700}
+.tag3{display:inline-block;border:1px solid var(--ink);font-size:11px;padding:0 8px;border-radius:4px;background:#fff}
+
+/* ジョージくんの吹き出し */
+.say{display:flex;align-items:flex-end;gap:10px;margin-top:20px}
+.say__img{width:80px;flex-shrink:0}
+.say__txt{flex:1;position:relative;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:12px 15px;font-size:14px;font-weight:700;line-height:1.65}
+.say--r{flex-direction:row-reverse;align-items:center}
+.say__txt big{font-size:19px;font-weight:900}
+
+/* ===== 01 FV ===== */
+.fv{background:var(--bg-1);padding:24px 0 32px;text-align:center}
+.fv__pill{display:inline-block;max-width:calc(100% - 32px);background:var(--dark);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:3px 14px;line-height:1.6}
+.fv__catch{font-size:34px;font-weight:900;line-height:1.3;margin-top:14px}
+.fv__lead{font-size:16px;margin-top:14px;line-height:1.6}
+.fv__visual{position:relative;margin:14px 15px 0}
+.fv__photo{border-radius:20px;overflow:hidden;aspect-ratio:448/420}
+.fv__photo img{width:100%;height:100%;object-fit:cover;object-position:62% 30%}
+.fv__pkg{position:absolute;left:-6px;bottom:-20px;width:42%}
+.fv__dog{position:absolute;right:4px;bottom:0;width:31%}
+.fv__tags{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:20px;font-size:12px;font-weight:700}
+
+/* ===== 02 お悩み ===== */
+.pain{margin-top:20px;display:grid;gap:16px}
+.pain li{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px;font-size:14px;line-height:1.6;max-width:390px}
+.pain li::before{content:"";width:32px;height:32px;border-radius:50%;background:var(--chip);flex-shrink:0}
+.pain li:nth-child(even){margin-left:auto}
+
+/* ===== 03 セルフチェック ===== */
+.check{margin:20px 0 0;padding:0;border:0;display:grid;gap:8px}
+.check label{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;font-size:15px;cursor:pointer;transition:background .2s,border-color .2s}
+.check input{position:absolute;opacity:0;pointer-events:none}
+.check__box{width:24px;height:24px;flex-shrink:0;border:2px solid var(--dark);border-radius:6px;background:#fff;display:grid;place-items:center;transition:background .2s}
+.check__box::after{content:"";width:10px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:translateY(-1px) rotate(-45deg);opacity:0}
+.check input:checked + .check__box{background:var(--dark)}
+.check input:checked + .check__box::after{opacity:1}
+.check label:has(input:checked){background:var(--bg-1)}
+.check input:focus-visible + .check__box{outline:3px solid #888;outline-offset:2px}
+.result{margin-top:20px;background:var(--bg-1);border-radius:var(--radius);padding:20px 18px;text-align:center}
+.result__count{font-size:14px;color:var(--muted)}
+.result__count b{font-size:22px;color:var(--ink);margin:0 2px}
+.result__ttl{font-size:18px;font-weight:900;line-height:1.45;margin-top:8px}
+.result__next{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* ===== 04 WHY ===== */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:8px;margin-top:20px}
+.vs__item{text-align:center}
+.vs__card{background:#fff;border-radius:18px;padding:12px 8px;aspect-ratio:198/260;display:grid;place-items:center}
+.vs__card img{height:86%;width:auto}
+.vs__item p{font-size:13px;line-height:1.55;margin-top:8px}
+.vs__mark{align-self:center;margin-top:-30px;font-weight:900;color:var(--muted)}
+.answer{margin-top:20px;background:var(--bg-1);border-radius:var(--radius);padding:22px 18px;text-align:center}
+.answer__then{font-size:18px;font-weight:900}
+.answer__logo{width:180px;margin:10px auto}
+.answer__txt{font-size:15px;line-height:1.6}
+
+/* ===== 05 活性：STEPタブ ===== */
+.tabs{margin-top:20px}
+.tabs__menu{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 4px}
+.tab{position:relative;border:0;cursor:pointer;background:#fff;border-radius:99px;min-height:86px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:700;line-height:1.3;transition:background .25s,color .25s,transform .2s}
+.tab__step{font-size:12px;letter-spacing:.08em;font-weight:900}
+.tab__step b{font-size:26px;margin-left:4px;vertical-align:-3px}
+.tab__ttl{font-size:12px;margin-top:4px}
+.tab[aria-selected="true"]{background:var(--dark);color:#fff;min-height:89px}
+.tab[aria-selected="true"]::after{content:"";position:absolute;bottom:-11px;left:50%;transform:translateX(-50%);border-left:11px solid transparent;border-right:11px solid transparent;border-top:12px solid var(--dark)}
+.panel{margin:14px 0 0;background:#fff;border-radius:var(--radius);padding:22px 18px 24px;text-align:center}
+.panel[hidden]{display:none}
+.panel.is-in{animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.badge{display:inline-block;background:var(--dark);color:#fff;font-size:14px;font-weight:900;letter-spacing:.12em;border-radius:99px;padding:2px 14px}
+.panel__ttl{font-size:18px;font-weight:900;line-height:1.5;margin-top:10px}
+.panel__ttl small{display:block;font-size:19px;margin-top:6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.pair figcaption{font-size:13px;font-weight:700;color:var(--muted);line-height:1.3;margin-bottom:8px}
+.pair figure:last-child figcaption{color:var(--ink)}
+.pair__img{border-radius:14px;overflow:hidden}
+.pair__img img{width:100%}
+.pair__label{display:block;margin-top:8px;font-size:13px;font-weight:700;line-height:1.45}
+.panel__text{font-size:14px;margin-top:16px;line-height:1.8}
+.drops{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin-top:10px}
+.drops__item{position:relative;display:flex;flex-direction:column;align-items:center;font-size:13px}
+.drops__item img{width:65px;margin-top:30px}
+.drops__item--active img{width:130px;margin-top:0}
+.drops__item figcaption{margin-top:12px;line-height:1.4}
+.drops__item--active figcaption{font-weight:700}
+.drops__water{position:absolute;font-size:13px}
+.drops__water--l{left:-6px;top:30px}
+.drops__water--r{right:-28px;top:16px}
+.drops__lt{font-size:30px;color:var(--muted);align-self:center;margin-top:-20px}
+.chain{margin-top:16px;display:grid;justify-items:center}
+.chain li{width:100%;border-radius:12px;padding:10px;font-size:15px;font-weight:700;line-height:1.5}
+.chain li:first-child{background:var(--bg-2)}
+.chain li:last-child{background:var(--bg-1)}
+.chain li + li{margin-top:22px;position:relative}
+.chain li + li::before{content:"↓";position:absolute;top:-23px;left:50%;transform:translateX(-50%);font-size:14px;color:var(--muted)}
+.tabs .note{margin-top:16px;text-align:center}
+@media (max-width:440px){
+  .panel__text br,.chain br,br.pc{display:none}
+  br.sp{display:inline}
+  .say__txt big{font-size:16px}
+  .faq__q{font-size:14px}
+  .chain li{font-size:14px}
+  .panel__text{font-size:13.5px}
+}
+
+/* はじめての便秘薬 */
+.first{margin-top:56px}
+.first__card{display:flex;align-items:center;gap:14px;background:#fff;border-radius:var(--radius);padding:16px;margin-top:20px}
+.first__card img{width:96px;flex-shrink:0}
+.first__card h3{font-size:16px;font-weight:900;line-height:1.5}
+.first__card p{font-size:13px;margin-top:4px;line-height:1.6;color:var(--muted)}
+.for__ttl{text-align:center;font-size:20px;font-weight:900;margin-top:40px}
+.for{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.for li{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 8px;text-align:center}
+.for img{height:96px;width:auto;margin:0 auto 10px}
+.for h4{font-size:14px;line-height:1.4}
+.for p{font-size:12px;margin-top:4px;color:var(--muted)}
+
+/* ===== 06 リニューアル ===== */
+.renewal{text-align:center}
+.renewal__news{font-size:22px;font-weight:900;line-height:1.5}
+.renewal__row{display:flex;align-items:center;justify-content:center;gap:12px}
+.renewal__row img{height:34px;width:auto}
+.old-logo{display:inline-flex;flex-direction:column;align-items:flex-start;height:34px;justify-content:center;padding:0 12px;border:2.5px solid #222;border-radius:9px;background:#8a8a8a;color:#111;font-size:17px;font-weight:900;line-height:1;letter-spacing:0}
+.old-logo small{font-size:6px;letter-spacing:.1em;margin-bottom:1px}
+.renewal__row + .renewal__row{margin-top:8px}
+.renewal__news > p{margin-top:12px}
+.more-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:min(328px,100%);min-height:56px;margin:20px auto 0;border:0;border-radius:99px;
+  background:var(--dark);color:#fff;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 4px 0 #2b2b2b;transition:transform .2s,box-shadow .2s,background .2s}
+.more-btn__icon{font-size:20px;line-height:1;transition:transform .3s}
+.more-btn[aria-expanded="true"] .more-btn__icon{transform:rotate(45deg)}
+.reveal{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.reveal > div{overflow:hidden;min-height:0}
+.reveal.is-open{grid-template-rows:1fr}
+.rn{margin-top:20px;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:22px 18px}
+.rn__no{display:inline-block;background:var(--dark);color:#fff;border-radius:99px;font-size:13px;font-weight:900;padding:1px 12px}
+.rn__ttl{font-size:18px;font-weight:900;line-height:1.45;margin-top:10px}
+.rn__spec{margin-top:12px;font-size:12px;font-weight:700}
+.rn__big{display:block;font-size:40px;font-weight:900;line-height:1.2}
+.rn__sub{font-size:13px;color:var(--muted)}
+.rn__before{font-size:11px;color:var(--muted)}
+.rn__before b{font-size:15px}
+.rn img{width:220px;margin:12px auto}
+.rn__text{font-size:13px;line-height:1.7}
+.renewal .note{margin-top:14px}
+
+/* ===== 07 飲み方 ===== */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px;text-align:center}
+.how__no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--dark);color:#fff;font-size:12px;font-weight:900}
+.how h3{font-size:15px;font-weight:900;line-height:1.35;margin-top:6px;min-height:2.7em;display:grid;place-items:start center}
+.how img{height:64px;width:auto;margin:4px auto}
+.how p{font-size:12px;line-height:1.5;color:var(--muted)}
+.how-note{font-size:13px;text-align:center;margin-top:20px;color:var(--muted)}
+
+/* ===== 08 HAPPY ===== */
+.after{background:#fff;padding-bottom:56px}
+.after__photo{aspect-ratio:478/390;overflow:hidden}
+.after__photo img{width:100%;height:100%;object-fit:cover;object-position:55% 40%}
+.after__box{position:relative;margin:-70px 20px 0;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:28px 20px 20px;text-align:center}
+.after__catch{font-size:24px;font-weight:900;line-height:1.4}
+.after__text{font-size:14px;margin-top:14px}
+.after__icons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.after__icons div{background:var(--bg-1);border-radius:14px;padding:12px 4px;font-size:13px;font-weight:700;line-height:1.4}
+.after__icons div::before{content:"";display:block;width:28px;height:28px;margin:0 auto 6px;border-radius:50%;background:#cfcfcf}
+.after .note{margin-top:14px;text-align:left}
+
+/* ===== 09 TV CM ===== */
+.cm{text-align:center}
+.cm__amb{display:flex;align-items:center;justify-content:center;gap:6px;font-weight:900;font-size:15px}
+.cm__amb img{height:30px;width:auto}
+.cm .ttl{margin-top:8px}
+.cm__player{position:relative;margin-top:20px;border-radius:18px;overflow:hidden;aspect-ratio:440/248;background:#c8c8c8}
+.cm__player button{all:unset;cursor:pointer;position:absolute;inset:0;display:block}
+.cm__player button:focus-visible{outline:3px solid #888;outline-offset:-3px}
+.cm__player img{width:100%;height:100%;object-fit:cover;object-position:50% 78%}
+.cm__label{position:absolute;left:12px;top:12px;background:#fff;font-size:11px;font-weight:700;padding:1px 10px;border-radius:99px}
+.cm__play{position:absolute;left:50%;top:50%;width:64px;height:64px;transform:translate(-50%,-50%);border-radius:50%;background:rgba(77,77,77,.9);display:grid;place-items:center;transition:transform .3s}
+.cm__play::before{content:"";margin-left:5px;border-left:20px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent}
+.cm__player button:hover .cm__play{transform:translate(-50%,-50%) scale(1.08)}
+.cm__player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cm__more{margin-top:20px;font-size:15px;font-weight:700}
+
+/* ===== 10 購入 ===== */
+.buy{text-align:center}
+.buy__dog{width:166px;margin:0 auto 20px}
+.lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.lineup li{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:10px 6px 14px}
+.lineup img{aspect-ratio:1/1;object-fit:contain;width:100%}
+.lineup h3{font-size:15px;font-weight:900;margin-top:4px}
+.lineup p{font-size:12px;line-height:1.45}
+.lineup p b{font-size:16px}
+.lineup .is-pop{border:2px solid var(--dark)}
+.lineup .is-pop::before{content:"お得";position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;font-size:11px;font-weight:700;padding:0 10px;border-radius:99px}
+.buy .note{margin-top:20px}
+.buy__pdf{margin-top:20px;font-size:15px;font-weight:700}
+.shop{margin-top:20px;background:var(--bg-1);border-radius:var(--radius);padding:24px 21px;text-align:left}
+.shop__ttl{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:900;line-height:1.4}
+.shop__ttl::before{content:"";width:36px;height:36px;border-radius:50%;background:#fff;flex-shrink:0}
+.shop__text{font-size:13px;margin-top:12px;color:var(--muted)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;border-radius:99px;font-weight:900;font-size:16px;text-decoration:none;letter-spacing:.06em;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+.btn--main{background:var(--dark);color:#fff;box-shadow:0 4px 0 #2b2b2b;border:0}
+.btn--main:active{transform:translateY(3px);box-shadow:0 1px 0 #2b2b2b}
+.btn--sub{background:#fff;color:var(--ink);border:2px solid var(--dark)}
+.shop .btn{margin-top:12px}
+.ec{display:grid;gap:12px;margin-top:12px}
+.ec .btn{min-height:52px;margin-top:0;font-size:15px}
+
+/* ===== 11 FAQ ===== */
+.faq{margin-top:20px;display:grid;gap:12px}
+.faq__item{background:#fff;border-radius:16px;overflow:hidden}
+.faq__q{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;gap:12px;align-items:flex-start;padding:16px 42px 16px 16px;position:relative;font-weight:700;font-size:15px;line-height:1.55}
+.faq__q:focus-visible{outline:3px solid #888;outline-offset:-3px;border-radius:16px}
+.faq__q::after{content:"∨";position:absolute;right:16px;top:16px;color:var(--muted);transition:transform .3s}
+.faq__q[aria-expanded="true"]::after{transform:rotate(180deg)}
+.qa{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:14px;letter-spacing:0;color:#fff;background:var(--dark)}
+.qa--a{background:#aaaaaa}
+.faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.faq__a > div{overflow:hidden;min-height:0}
+.faq__item.is-open .faq__a{grid-template-rows:1fr}
+.faq__a-in{display:flex;gap:12px;padding:0 16px 18px;font-size:14px;line-height:1.8}
+.faq__a-in p + p{margin-top:8px}
+.faq__extra{display:grid;gap:12px}
+.faq__extra[hidden]{display:none}
+.faq__more{margin-top:20px;background:#fff;border:0;color:var(--ink);font-weight:700;box-shadow:none}
+.faq__more .more-btn__icon{font-size:16px}
+.faq__more[aria-expanded="true"] .more-btn__icon{transform:rotate(180deg)}
+
+/* ===== 12 製品情報 ===== */
+.info{margin-top:20px;background:#fff;border:1.5px solid var(--line);border-radius:var(--radius);padding:4px 19px}
+.info__item + .info__item{border-top:1px dashed var(--line)}
+.info__q{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:700;font-size:16px}
+.info__q:focus-visible{outline:3px solid #888;outline-offset:2px}
+.info__q::after{content:"+";font-size:22px;color:var(--muted);font-weight:400;line-height:1}
+.info__q[aria-expanded="true"]::after{content:"−"}
+.info__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.info__a > div{overflow:hidden;min-height:0}
+.info__item.is-open .info__a{grid-template-rows:1fr}
+.info__body{font-size:14px;line-height:1.75;padding-bottom:16px}
+.info__body ol{display:grid;gap:2px;margin:6px 0}
+.dose{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.dose th,.dose td{padding:8px 10px;border-bottom:1px solid #eee;text-align:left}
+.dose th{font-weight:500;background:var(--bg-1);width:50%}
+.dose td{font-weight:700}
+
+/* ===== 13 Footer ===== */
+.footer{background:var(--footer);padding:44px 20px 110px;text-align:center}
+.footer__logo{width:200px;margin:0 auto}
+.footer__links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.footer__links a{font-size:14px;text-decoration:none;border:1.5px solid var(--muted);border-radius:99px;padding:9px 6px;transition:transform .3s}
+.footer__sns{display:flex;justify-content:center;gap:14px;margin-top:24px}
+.footer__sns a{width:48px;height:48px;border-radius:50%;background:#b3b3b3;display:grid;place-items:center;font-size:11px;font-weight:700;text-decoration:none;transition:transform .3s}
+.footer__addr{font-size:13px;margin-top:24px;line-height:1.7}
+.footer__copy{font-size:11px;margin-top:24px;color:var(--muted)}
+
+/* ===== 追従CTA ===== */
+.fixed-cta{position:fixed;left:50%;bottom:12px;transform:translate(-50%,220%);width:calc(100% - 24px);max-width:456px;z-index:60;transition:transform .35s}
+.fixed-cta.is-show{transform:translate(-50%,0)}
+.fixed-cta .btn{box-shadow:0 4px 0 #2b2b2b,0 10px 24px rgba(0,0,0,.2)}
+.fixed-cta__dog{position:absolute;right:10px;top:-44px;width:56px;pointer-events:none}
+
+/* ===== ホバー ===== */
+@media (hover:hover) and (pointer:fine){
+  .btn--main:hover,.more-btn:hover{transform:translateY(3px);box-shadow:0 1px 0 #2b2b2b}
+  .fixed-cta .btn--main:hover{box-shadow:0 1px 0 #2b2b2b,0 6px 16px rgba(0,0,0,.18)}
+  .header__buy:hover{background:#fff;color:var(--dark)}
+  .btn--sub:hover{background:var(--dark);color:#fff}
+  .faq__more:hover{background:var(--dark);color:#fff;transform:none;box-shadow:none}
+  .tab:not([aria-selected="true"]):hover{background:var(--bg-2)}
+  .footer__links a:hover,.footer__sns a:hover{transform:scale(1.03)}
+}
+
+/* ===== フェードイン ===== */
+.js .fade{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.js .fade.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .fade{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- PC 左：メニュー（追従） -->
+<aside class="side side--left" aria-label="メニュー">
+  <a href="#top"><img class="side__logo" src="images/logo.svg" alt="フジックス株式会社" width="379" height="38"></a>
+  <nav class="side__nav">
+    <a href="#worry">便秘にお悩み</a>
+    <a href="#check">便秘は、腸の水不足？</a>
+    <a href="#active">「活性」のチカラ</a>
+    <a href="#first">はじめての便秘薬</a>
+    <a href="#cm">テレビCM</a>
+    <a href="#buy">どこで買えるの？</a>
+    <a href="#faq">よくあるご質問</a>
+  </nav>
+  <div class="side__sns">
+    <a href="https://www.instagram.com/fujix_3aca/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+    <a href="https://youtube.com/channel/UCQL0inhFtcqfTv5Dkx9OJ8w" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+  </div>
+</aside>
+
+<!-- PC 右：製品（追従） -->
+<aside class="side side--right" aria-label="製品紹介">
+  <p class="side__badges"><span class="tag-act">活性</span>酸化マグネシウム配合</p>
+  <p class="side__ttl">おなかにやさしい・<br>非刺激性の便秘薬</p>
+  <img class="side__name g" src="images/logo-magnesia.png" alt="3AマグネシアS" width="1434" height="464">
+  <img class="side__pkg g" src="images/img-package-90.png" alt="3AマグネシアS 90錠 パッケージ" width="772" height="772">
+  <span class="side__tag">第3類医薬品</span>
+</aside>
+
+<div class="frame">
+
+<header class="header">
+  <a href="#top" aria-label="ページトップへ"><img class="header__logo g" src="images/logo-magnesia.png" alt="3AマグネシアS" width="1434" height="464"></a>
+  <div class="header__btn">
+    <a class="header__buy" href="#buy">購入する</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav" id="nav" aria-label="ページ内メニュー">
+    <a href="#worry">便秘にお悩み</a>
+    <a href="#check">便秘は、腸の水不足？</a>
+    <a href="#active">「活性」のチカラ</a>
+    <a href="#first">はじめての便秘薬</a>
+    <a href="#cm">テレビCM</a>
+    <a href="#buy">どこで買えるの？</a>
+    <a href="#faq">よくあるご質問</a>
+    <a href="https://3aca.co.jp/" target="_blank" rel="noopener">フジックス公式サイト</a>
+    <div class="nav__sns">
+      <a href="https://www.instagram.com/fujix_3aca/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+      <a href="https://youtube.com/channel/UCQL0inhFtcqfTv5Dkx9OJ8w" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ===== 01 FV ===== -->
+<section class="fv" id="fv">
+  <p class="fv__pill">おなかが痛くなりにくい・クセになりにくい便秘薬</p>
+  <h1 class="fv__catch">いいお通じは、<br>ハッピーに通ず。</h1>
+  <p class="fv__lead">腸にうるおいを集めて、<br>やさしく自然なお通じへ。</p>
+  <div class="fv__visual">
+    <div class="fv__photo"><img class="g" src="images/fv-photo.png" alt="笑顔の女性" width="2158" height="1210"></div>
+    <img class="fv__pkg g" src="images/img-package-90.png" alt="3AマグネシアS 90錠 パッケージ" width="772" height="772">
+    <img class="fv__dog g" src="images/fv-dog.png" alt="ジョージくん" width="682" height="700">
+  </div>
+  <p class="fv__tags"><span class="tag-act">活性</span>酸化マグネシウム便秘薬<span class="tag3">第3類医薬品</span></p>
+</section>
+
+<!-- ===== 02 お悩み ===== -->
+<section class="sec" id="worry">
+  <h2 class="ttl fade">こんなお悩み、<br>ありませんか？</h2>
+  <ul class="pain">
+    <li class="fade">便秘になっちゃった…</li>
+    <li class="fade">便秘薬を使ってみたいけど、ちょっと不安…</li>
+    <li class="fade">おでかけ中や、人と会っているとき急に便意が来るのが心配…</li>
+    <li class="fade">お腹にやさしくても、ちゃんとスッキリ出る<br>便秘薬を使いたい！</li>
+  </ul>
+</section>
+
+<!-- ===== 03 セルフチェック ===== -->
+<section class="sec" id="check">
+  <span class="eyebrow fade">SELF CHECK</span>
+  <h2 class="ttl fade">もしかして、腸の<br>“うるおい不足”かも？</h2>
+  <p class="lead fade">当てはまるものを、<br>チェックしてみてください。</p>
+  <div class="say fade">
+    <img class="say__img g" src="images/link_illust_george.png" alt="ジョージくん" width="282" height="286">
+    <p class="say__txt">いくつ当てはまるかな？<br>いっしょにチェックしてみるワン！</p>
+  </div>
+  <fieldset class="check fade" id="checkList">
+    <legend class="sr-only">セルフチェック項目</legend>
+    <label><input type="checkbox"><span class="check__box" aria-hidden="true"></span>お水やお茶を、あまり飲まないほう</label>
+    <label><input type="checkbox"><span class="check__box" aria-hidden="true"></span>便がかたくて、出すのに時間がかかる</label>
+    <label><input type="checkbox"><span class="check__box" aria-hidden="true"></span>2〜3日出ない日が、よくある</label>
+    <label><input type="checkbox"><span class="check__box" aria-hidden="true"></span>排便時間は日によって異なる</label>
+    <label><input type="checkbox"><span class="check__box" aria-hidden="true"></span>朝ごはんを食べないことがある</label>
+    <label><input type="checkbox"><span class="check__box" aria-hidden="true"></span>便意はあっても十分に排便されていない気がする</label>
+  </fieldset>
+  <div class="result fade" aria-live="polite">
+    <p class="result__count" id="checkCount">ひとつでも当てはまったら…</p>
+    <p class="result__ttl">腸の“うるおい不足”に<br>なっているのかもしれません。</p>
+    <p class="result__next">そのしくみと、やさしい対策を次でご紹介します ↓</p>
+  </div>
+</section>
+
+<!-- ===== 04 WHY ===== -->
+<section class="sec bg-2" id="why">
+  <span class="eyebrow fade">WHY?</span>
+  <h2 class="ttl fade">どうして、腸が<br>“水不足”になるの？</h2>
+  <p class="lead fade"><b>実は大腸はとても乾燥しやすい場所。</b><br>大腸の水分はどんどんと失われています（大腸の砂漠化）。<br>それが、便を硬くし、便秘の原因になります。</p>
+  <div class="vs fade">
+    <figure class="vs__item">
+      <div class="vs__card"><img class="g" src="images/illust/why-dry.svg" alt="水不足の腸（砂漠化）のイラスト" width="187" height="267"></div>
+      <p>水分が足りず<br>かたくて出にくい</p>
+    </figure>
+    <span class="vs__mark" aria-hidden="true">VS</span>
+    <figure class="vs__item">
+      <div class="vs__card"><img class="g" src="images/illust/why-moist.svg" alt="うるおっている腸のイラスト" width="193" height="268"></div>
+      <p>水分たっぷりで<br>やわらかい便（バナナ便）</p>
+    </figure>
+  </div>
+  <div class="say fade">
+    <img class="say__img g" src="images/link_illust_george.png" alt="ジョージくん" width="282" height="286">
+    <p class="say__txt">腸がうるおうと、スルッと出やすくなる。<br>腸に水分を与え、便をやわらかくして、排便を促す。お薬それが酸化マグネシウムなんだワン</p>
+  </div>
+  <div class="answer fade">
+    <p class="answer__then">そして</p>
+    <img class="answer__logo g" src="images/logo-magnesia.png" alt="3AマグネシアS" width="1434" height="464">
+    <p class="answer__txt">は <span class="tag-act">活性</span> 酸化マグネシウムの<br>便秘薬なんだワン。</p>
+  </div>
+</section>
+
+<!-- ===== 05 活性：STEPタブ ===== -->
+<section class="sec bg-3" id="active">
+  <h2 class="ttl fade">活性って、<br>なにがちがうの？</h2>
+  <p class="lead fade">同じ酸化マグネシウムでも、<br class="sp"><em class="em-act">“活性”</em>酸化マグネシウムは<br>ちょっとちがうんです。<br>そのひみつを、3つのステップでご紹介します。</p>
+  <div class="say say--r fade">
+    <img class="say__img g" src="images/news-illust-dog.png" alt="ジョージくん" width="200" height="254">
+    <p class="say__txt">ポイントは <big>粒子の細かさ！</big><br>それが、水を集める力に差が出るワン</p>
+  </div>
+
+  <div class="tabs fade" data-tabs>
+    <div class="tabs__menu" role="tablist" aria-label="活性酸化マグネシウムの3つのステップ">
+      <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true"><span class="tab__step">STEP<b>1</b></span><span class="tab__ttl">きめ細かい<br>粒子</span></button>
+      <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1"><span class="tab__step">STEP<b>2</b></span><span class="tab__ttl">胃ですばやく<br>溶ける</span></button>
+      <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1"><span class="tab__step">STEP<b>3</b></span><span class="tab__ttl">大腸で<br>スポンジ効果</span></button>
+    </div>
+
+    <article class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+      <span class="badge">STEP 1</span>
+      <h3 class="panel__ttl">きめ細かい粒子</h3>
+      <div class="pair">
+        <figure><figcaption>酸化マグネシウム</figcaption><div class="pair__img"><img src="images/v3/step1-normal.png" alt="酸化マグネシウムの粒子のイラスト" width="182" height="153"></div></figure>
+        <figure><figcaption>活性酸化マグネシウム</figcaption><div class="pair__img"><img src="images/v3/step1-active.png" alt="活性酸化マグネシウムの細かい粒子のイラスト" width="182" height="153"></div><span class="pair__label">粒子が細かく<br>表面積が大きい</span></figure>
+      </div>
+      <p class="panel__text">活性酸化マグネシウムは、とても細かい粉。<br>粒が小さいほど胃の中で素早く溶けます。</p>
+    </article>
+
+    <article class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+      <span class="badge">STEP 2</span>
+      <h3 class="panel__ttl">だから、胃の中で、すばやく溶ける</h3>
+      <div class="pair">
+        <figure><figcaption>酸化マグネシウム</figcaption><div class="pair__img"><img src="images/v3/step2-normal.png" alt="胃の中の酸化マグネシウムのイラスト" width="182" height="145"></div></figure>
+        <figure><figcaption>活性酸化マグネシウム</figcaption><div class="pair__img"><img src="images/v3/step2-active.png" alt="胃の中ですばやく溶ける活性酸化マグネシウムのイラスト" width="182" height="145"></div><span class="pair__label">よく溶ける</span></figure>
+      </div>
+      <p class="panel__text">細かい粒だから胃酸によく溶けて、<br>効率よく十分なマグネシウムが、大腸に届きます。</p>
+    </article>
+
+    <article class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+      <span class="badge">STEP 3</span>
+      <h3 class="panel__ttl">大腸に運ばれたマグネシウムは<br>たっぷりと水分を集めてくれます。<small>“大腸のスポンジ効果”</small></h3>
+      <div class="drops" role="img" aria-label="酸化マグネシウムより活性酸化マグネシウムのほうが多くの水分を集めるイメージ">
+        <figure class="drops__item"><span class="drops__water drops__water--l">水分</span><img src="images/v3/step3-drops-normal.png" alt="" width="65" height="98"><figcaption>酸化マグネシウム</figcaption></figure>
+        <span class="drops__lt" aria-hidden="true">＜</span>
+        <figure class="drops__item drops__item--active"><span class="drops__water drops__water--r">水分</span><img src="images/v3/step3-drops-active.png" alt="" width="130" height="124"><figcaption>活性酸化マグネシウム</figcaption></figure>
+      </div>
+      <ol class="chain">
+        <li>活性酸化マグネシウムはスポンジのように<br>たっぷり水分を集める</li>
+        <li>便がやわらかくする</li>
+      </ol>
+      <p class="panel__text">活性酸化マグネシウムは、水分が多いのが特長。<br>腸の中でスポンジのように水分をしっかりと<br>腸にたっぷり集め、かたい便をやわらかくします。</p>
+      <div class="pair">
+        <figure><div class="pair__img"><img src="images/v3/step3-normal.png" alt="うるおいが少ない腸のイラスト" width="197" height="145"></div><span class="pair__label">うるおい少なめ</span></figure>
+        <figure><div class="pair__img"><img src="images/v3/step3-active.png" alt="たっぷりうるおった腸のイラスト" width="197" height="145"></div><span class="pair__label">たっぷりうるおう</span></figure>
+      </div>
+    </article>
+    <p class="note">※効果には個人差があります。※イラストはイメージです。</p>
+  </div>
+
+  <!-- はじめての便秘薬 -->
+  <div class="first" id="first">
+    <h2 class="ttl fade">はじめての便秘薬だからこそ、<br>やさしい選択を。</h2>
+    <div class="first__card fade">
+      <img class="g" src="images/illust-01.png" alt="" width="492" height="432">
+      <div>
+        <h3>クセになりにくいから、<br>はじめてでも安心。</h3>
+        <p>習慣性が少ない非刺激性タイプ。調子がととのってきたら、量を減らすこともできます。</p>
+      </div>
+    </div>
+    <h3 class="for__ttl fade">こんな方にも</h3>
+    <ul class="for">
+      <li class="fade"><img class="g" src="images/recommend-illust-01.png" alt="" width="282" height="350"><h4>便秘薬がはじめての方</h4><p>やさしく使いはじめられます</p></li>
+      <li class="fade"><img class="g" src="images/recommend-illust-02.png" alt="" width="414" height="350"><h4>お子さま（5歳から）</h4><p>家族みんなで使えます</p></li>
+      <li class="fade"><img class="g" src="images/recommend-illust-03.png" alt="" width="286" height="350"><h4>授乳中の方</h4><p>授乳中でも服用いただけます</p></li>
+      <li class="fade"><img class="g" src="images/recommend-illust-05.png" alt="" width="364" height="350"><h4>痔でお悩みの方</h4><p>やわらかい便で負担を軽く</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 06 リニューアル ===== -->
+<section class="sec bg-1 renewal" id="renewal">
+  <div class="renewal__news fade">
+    <div class="renewal__row"><span class="old-logo"><small>スリーエー</small>3Aマグネシア</span><span>は</span></div>
+    <div class="renewal__row"><img class="g" src="images/logo-magnesia.png" alt="3AマグネシアS" width="1434" height="464"><span>に</span></div>
+    <p>リニューアルされました。</p>
+  </div>
+  <p class="lead fade">毎日つづけるものだから、うれしい2つの改良を。</p>
+  <button class="more-btn fade" type="button" aria-expanded="false" aria-controls="renewalPoints" id="renewalBtn">
+    <span class="more-btn__label">うれしい2つの改良を見る</span><span class="more-btn__icon" aria-hidden="true">＋</span>
+  </button>
+  <div class="reveal" id="renewalPoints">
+    <div>
+      <article class="rn">
+        <span class="rn__no">01</span>
+        <h3 class="rn__ttl">うすくて、<br>飲みやすい錠剤</h3>
+        <p class="rn__spec">錠剤の厚さ<span class="rn__big">約4.3mm</span><span class="rn__sub">すっと飲みこみやすい、うす型</span></p>
+        <img class="g" src="images/illust/renewal-slim.svg" alt="うす型の錠剤をつまむ手のイラスト" width="220" height="110">
+        <p class="rn__text">毎日のことだから、飲みやすさも大切に。<br>うす型の錠剤で、はじめての方にも続けやすくしました。</p>
+      </article>
+      <article class="rn">
+        <span class="rn__no">02</span>
+        <h3 class="rn__ttl">おなかの中で、サッとほどける</h3>
+        <p class="rn__spec">リニューアル後<span class="rn__big">約12秒</span><span class="rn__before">リニューアル前 <b>約90秒</b></span></p>
+        <img class="g" src="images/illust/renewal-speed.svg" alt="錠剤がサッとほどけるイラスト" width="220" height="110">
+        <p class="rn__text">すばやく崩れて溶けやすくなり、水を集めやすくなりました。</p>
+      </article>
+      <p class="note">※崩壊時間は日本薬局方に基づく試験方法で測定</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 飲み方 ===== -->
+<section class="sec" id="howto">
+  <h2 class="ttl fade">飲み方はかんたん。</h2>
+  <ol class="how fade">
+    <li><span class="how__no">1</span><h3>1日1回</h3><img class="g" src="images/illust/how-1.svg" alt="" width="94" height="75"><p>ひとつの習慣に</p></li>
+    <li><span class="how__no">2</span><h3>寝る前に</h3><img class="g" src="images/illust/how-2.svg" alt="" width="99" height="67"><p>おやすみ前の<br>ひととき</p></li>
+    <li><span class="how__no">3</span><h3>コップ1杯の<br>水で</h3><img class="g" src="images/illust/how-3.svg" alt="" width="47" height="50"><p>水といっしょに<br>うるおいを</p></li>
+  </ol>
+  <p class="how-note fade">年齢や、おなかの調子にあわせて量を調整できます。<br>くわしくは「<a href="#info" data-open-info>製品情報</a>」の用法・用量をご確認ください。</p>
+</section>
+
+<!-- ===== 08 HAPPY DAYS ===== -->
+<section class="after" id="happy">
+  <div class="after__photo"><img class="g" src="images/happy-photo.png" alt="ジョージくんと笑顔で過ごす女性" width="1780" height="1092" loading="lazy"></div>
+  <div class="after__box fade">
+    <h2 class="after__catch">毎日スッキリ！<br>体も気持ちも軽やかで、<br>ハッピーに</h2>
+    <p class="after__text">おなかの重さが気にならないと、毎日がもっと前向きに。<br>家族みんなの笑顔も、おなかの調子から。</p>
+    <div class="after__icons"><div>朝から<br>スッキリ</div><div>気分も<br>軽やか</div><div>家族で<br>使える</div></div>
+    <p class="note">※効果には個人差があります。</p>
+  </div>
+</section>
+
+<!-- ===== 09 TV CM ===== -->
+<section class="sec bg-2 cm" id="cm">
+  <p class="cm__amb fade"><img class="g" src="images/logo-magnesia.png" alt="3AマグネシアS" width="1434" height="464">のアンバサダー</p>
+  <h2 class="ttl fade">ジョージくんが出演する<br>テレビCM</h2>
+  <p class="lead fade">おなかの悩みに寄り添う3AマグネシアS。<br>CMでもおなじみのジョージくんと一緒にお届けしています。</p>
+  <div class="cm__player fade" id="cmPlayer">
+    <button type="button" aria-label="3AマグネシアS テレビCMを再生する">
+      <img class="g" src="images/cm-thumb.webp" alt="" width="1940" height="1932" loading="lazy">
+      <span class="cm__label">3AマグネシアS テレビCM</span>
+      <span class="cm__play" aria-hidden="true"></span>
+    </button>
+  </div>
+  <p class="cm__more fade"><a href="https://www.youtube.com/playlist?list=PLp8esNOBR1qfKS6DJNZkMmITyGyNwSpmJ" target="_blank" rel="noopener">CM再生リストをYouTubeで見る ↗</a></p>
+</section>
+
+<!-- ===== 10 購入 ===== -->
+<section class="sec buy" id="buy">
+  <img class="buy__dog fade g" src="images/products-illust-dog.png" alt="" width="456" height="252">
+  <h2 class="ttl fade">今日から始める、<br>やさしいお通じ習慣</h2>
+  <ul class="lineup fade">
+    <li><img class="g" src="images/img-package-90.png" alt="" width="772" height="772" loading="lazy"><h3>90錠</h3><p><b>1,479</b>円<br>（税込）</p></li>
+    <li><img class="g" src="images/img-package-180.png" alt="" width="480" height="480" loading="lazy"><h3>180錠</h3><p><b>2,711</b>円<br>（税込）</p></li>
+    <li class="is-pop"><img class="g" src="images/img-package-360.png" alt="" width="772" height="772" loading="lazy"><h3>360錠</h3><p><b>4,928</b>円<br>（税込）</p></li>
+  </ul>
+  <p class="note">第3類医薬品／希望小売価格</p>
+  <p class="buy__pdf"><a href="https://3aca.co.jp/assets/pdf/product/magnesia/document.pdf" target="_blank" rel="noopener">商品添付文書（PDF）はこちら ↗</a></p>
+  <div class="shop fade">
+    <h3 class="shop__ttl">お近くのドラッグストア・薬局で</h3>
+    <p class="shop__text">全国のドラッグストア・薬局でお買い求めいただけます。店頭にない場合は、薬剤師・登録販売者にお気軽にお問い合わせください。</p>
+    <a class="btn btn--sub" href="https://3aca.co.jp/contact/" target="_blank" rel="noopener">取扱店のお問い合わせ ›</a>
+  </div>
+  <div class="shop fade">
+    <h3 class="shop__ttl">オンラインショップで</h3>
+    <p class="shop__text">ご自宅から手軽にご注文いただけます。（外部サイトへ移動します）</p>
+    <div class="ec">
+      <a class="btn btn--main" href="https://www.amazon.co.jp/s?k=3A%E3%83%9E%E3%82%B0%E3%83%8D%E3%82%B7%E3%82%A2S" target="_blank" rel="noopener">Amazonで購入 ›</a>
+      <a class="btn btn--main" href="https://search.rakuten.co.jp/search/mall/3A%E3%83%9E%E3%82%B0%E3%83%8D%E3%82%B7%E3%82%A2S/" target="_blank" rel="noopener">楽天市場で購入 ›</a>
+      <a class="btn btn--main" href="https://shopping.yahoo.co.jp/search?p=3A%E3%83%9E%E3%82%B0%E3%83%8D%E3%82%B7%E3%82%A2S" target="_blank" rel="noopener">Yahoo!ショッピングで購入 ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11 FAQ ===== -->
+<section class="sec bg-1" id="faq">
+  <span class="eyebrow fade">FAQ</span>
+  <h2 class="ttl fade">よくあるご質問</h2>
+  <div class="faq">
+    <div class="faq__item fade"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>活性酸化マグネシウムとは何ですか？<br class="pc">他の酸化マグネシウムとどう違うのですか？</button>
+      <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>活性酸化マグネシウムとは、保水力の高い酸化マグネシウムのことです。<br>腸に水を集めることに優れています。</p></div></div></div></div></div>
+    <div class="faq__item fade"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>何錠から始めればいい？</button>
+      <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>1日1回、就寝前にコップ1杯の水で服用してください。初回は最少量（成人〈15歳以上〉は3錠）から始め、便通の具合や状態をみながら少しずつ増量又は減量してください。</p><p>年齢ごとの用量は「製品情報」の用法・用量をご確認ください。</p></div></div></div></div></div>
+    <div class="faq__item fade"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>色々な便秘薬を試していますが、いつもおなかが痛くなります。</button>
+      <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>3AマグネシアSは、腸の筋肉を刺激したり、神経に働きかけるような便秘薬とは違い、腸内に水を集めて便を軟らかくするマグネシウム主体の便秘薬で、穏やかな効き目です。</p><p>刺激による急な腹痛が少ないのが特徴で、日常的なケアにもおすすめできます。</p></div></div></div></div></div>
+    <div class="faq__item fade"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>便秘薬で排便することがくせになり、自然に出なくなってしまうのではないかと不安です。</button>
+      <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>刺激性の便秘薬は、腸に刺激を与えて排便させます。しかし、この刺激はだんだん慣れてしまいます。そのため、より多くの刺激が必要となり、服用量が増えたりします。</p><p>3AマグネシアSは腸内に水分を溜めて便を軟らかくして排便を促すタイプですので、服用量が増えたり習慣になりにくいです。</p></div></div></div></div></div>
+    <div class="faq__extra" id="faqExtra" hidden>
+      <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>マグネシウムの摂り過ぎにはなりませんか？</button>
+        <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>マグネシウムは人体に大切な必須栄養素であるため基本的に体に害はございません。3AマグネシアSは小腸で吸収されにくく、大腸まで届くようになっております。万一多く摂り過ぎても、吸収されず体外に出てしまうのがほとんどで、摂り過ぎによる心配はほとんどありません。</p></div></div></div></div></div>
+      <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>どんな人でも服用できますか？</button>
+        <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>5歳以上から服用できます。子どもに服用させる場合には、保護者の指導監督のもとに服用させてください。</p></div></div></div></div></div>
+      <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>妊娠中なのですが、体に害はありませんか？</button>
+        <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>妊娠中はホルモンバランスの変化や子宮による腸管の圧迫などにより、どうしても便秘になりやすい時期です。酸化マグネシウム（マグネシウム製剤）は、産婦人科医のほとんどが妊婦さんの便秘対策として処方している成分です。</p><p>ただし、同じ酸化マグネシウムでもご妊娠の経過やお身体の状態によって適切な量やタイミングが異なる場合があります。ご使用の際は、必ずかかりつけの産婦人科医や医療機関にご相談のうえ、ご指示に従ってお飲みください。</p></div></div></div></div></div>
+      <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>服用したのに何日も便が出ないのですが。</button>
+        <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p>コチコチになってしまった便が肛門を塞いでしまっていることが考えられます。何日も肛門や直腸に溜まってしまった便は、浣腸をするか病院に行って掻き出してもらうことを、おすすめします。スッキリ出した後は、便秘を繰り返さないためにも、3AマグネシアSを早めに服用してください。</p></div></div></div></div></div>
+      <div class="faq__item"><button class="faq__q" type="button" aria-expanded="false"><span class="qa">Q</span>服用を注意しなければならない人はどんな人ですか？</button>
+        <div class="faq__a"><div><div class="faq__a-in"><span class="qa qa--a">A</span><div><p><b>腎臓に疾患のある方：</b>血液中に取り込まれたマグネシウムが滞留して、高マグネシウム血症を起こす可能性があるからです。服用前に医師、薬剤師、又は登録販売者に相談してください。</p><p><b>妊婦又は妊娠していると思われる人：</b>妊婦の方の個々のご様子がわかりかねますので、医師の判断の元でご服用されることをおすすめしております。</p><p><b>高齢者（一般的に65歳以上）：</b>体の代謝機能や心臓の機能が低下している場合があるため、服用前に医師、薬剤師又は登録販売者にご相談ください。</p></div></div></div></div></div>
+    </div>
+  </div>
+  <button class="more-btn faq__more fade" type="button" aria-expanded="false" aria-controls="faqExtra" id="faqMore"><span class="more-btn__label">もっと見る</span><span class="more-btn__icon" aria-hidden="true">∨</span></button>
+</section>
+
+<!-- ===== 12 製品情報 ===== -->
+<section class="sec" id="info">
+  <span class="eyebrow fade">PRODUCT</span>
+  <h2 class="ttl fade">製品情報</h2>
+  <div class="info fade">
+    <div class="info__item"><button class="info__q" type="button" aria-expanded="false">効能・効果</button>
+      <div class="info__a"><div><div class="info__body">便秘<br>便秘に伴う次の症状の緩和：頭重、のぼせ、肌あれ、吹出物、食欲不振（食欲減退）、腹部膨満、腸内異常発酵、痔</div></div></div></div>
+    <div class="info__item is-open" id="infoDose"><button class="info__q" type="button" aria-expanded="true">用法・用量</button>
+      <div class="info__a"><div><div class="info__body">1日1回就寝前にコップ1杯の水で服用してください。（5歳未満は服用しないでください。）
+        <table class="dose">
+          <tr><th>成人（15歳以上）</th><td>1回 3〜6錠</td></tr>
+          <tr><th>11歳以上15歳未満</th><td>1回 2〜4錠</td></tr>
+          <tr><th>7歳以上11歳未満</th><td>1回 2〜3錠</td></tr>
+          <tr><th>5歳以上7歳未満</th><td>1回 1〜2錠</td></tr>
+        </table></div></div></div></div>
+    <div class="info__item"><button class="info__q" type="button" aria-expanded="false">成分・分量（6錠中）</button>
+      <div class="info__a"><div><div class="info__body">酸化マグネシウム 2000mg<br>添加物：セルロース、クロスカルメロースNa、ステアリン酸Ca、l-メントール</div></div></div></div>
+    <div class="info__item"><button class="info__q" type="button" aria-expanded="false">使用上の注意</button>
+      <div class="info__a"><div><div class="info__body">次の人は服用前に医師、薬剤師又は登録販売者に相談してください。
+        <ol><li>(1) 医師の治療を受けている人。</li><li>(2) 妊婦又は妊娠していると思われる人。</li><li>(3) 高齢者</li><li>(4) 次の症状のある人。はげしい腹痛、吐き気・嘔吐</li><li>(5) 次の診断を受けた人。腎臓病</li></ol>
+        服用に際しては、説明文書をよくお読みください。直射日光の当たらない湿気の少ない涼しい所に密栓して保管してください。小児の手の届かない所に保管してください。使用期限を過ぎた製品は服用しないでください。</div></div></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <img class="footer__logo" src="images/logo.svg" alt="フジックス株式会社" width="379" height="38">
+  <div class="footer__links">
+    <a href="https://3aca.co.jp/" target="_blank" rel="noopener">公式サイト</a>
+    <a href="https://3aca.co.jp/product/magnesia/" target="_blank" rel="noopener">製品ページ</a>
+    <a href="https://3aca.co.jp/column/category/constipation/" target="_blank" rel="noopener">便秘コラム</a>
+    <a href="https://3aca.co.jp/contact/" target="_blank" rel="noopener">お問い合わせ</a>
+  </div>
+  <div class="footer__sns">
+    <a href="https://www.instagram.com/fujix_3aca/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+    <a href="https://www.youtube.com/playlist?list=PLp8esNOBR1qfKS6DJNZkMmITyGyNwSpmJ" target="_blank" rel="noopener" aria-label="YouTube">Youtube</a>
+  </div>
+  <p class="footer__addr">フジックス株式会社<br>〒151-0053 東京都渋谷区代々木5-59-5<br>TEL. 03-3460-0712（代表）</p>
+  <p class="footer__copy">Copyright© FUJIX CO.,LTD All Rights Reserved.</p>
+</footer>
+
+<div class="fixed-cta" id="fixedCta">
+  <img class="fixed-cta__dog g" src="images/news-illust-dog.png" alt="" width="200" height="254">
+  <a class="btn btn--main" href="#buy">購入はこちら ›</a>
+</div>
+
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+
+// ハンバーガーメニュー
+(function(){
+  var btn=document.querySelector('.menu-toggle'),nav=document.getElementById('nav');
+  function close(){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','メニューを開く');nav.classList.remove('is-open');}
+  btn.addEventListener('click',function(){
+    if(btn.getAttribute('aria-expanded')==='true'){close();return;}
+    btn.setAttribute('aria-expanded','true');btn.setAttribute('aria-label','メニューを閉じる');nav.classList.add('is-open');
+  });
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+
+// フェードイン
+(function(){
+  var els=document.querySelectorAll('.fade');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+// STEPタブ（STEP1は常に表示、押したSTEPに切り替え）
+(function(){
+  var root=document.querySelector('[data-tabs]');
+  var tabs=[].slice.call(root.querySelectorAll('[role="tab"]'));
+  function select(i,focus){
+    tabs.forEach(function(t,j){
+      var on=i===j,p=document.getElementById(t.getAttribute('aria-controls'));
+      t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;
+      p.hidden=!on;
+      if(on){p.classList.remove('is-in');void p.offsetWidth;p.classList.add('is-in');}
+    });
+    if(focus)tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(i)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){e.preventDefault();select((i+1)%tabs.length,true);}
+      if(e.key==='ArrowLeft'){e.preventDefault();select((i+tabs.length-1)%tabs.length,true);}
+    });
+  });
+})();
+
+// リニューアル：ボタンで改良ポイントを開閉
+(function(){
+  var btn=document.getElementById('renewalBtn'),box=document.getElementById('renewalPoints'),label=btn.querySelector('.more-btn__label');
+  btn.addEventListener('click',function(){
+    var open=box.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded',String(open));
+    label.textContent=open?'改良ポイントを閉じる':'うれしい2つの改良を見る';
+  });
+})();
+
+// FAQ：質問ごとの開閉
+document.querySelectorAll('.faq__q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.closest('.faq__item'),open=item.classList.toggle('is-open');
+    q.setAttribute('aria-expanded',String(open));
+  });
+});
+// FAQ：もっと見る / 閉じる
+(function(){
+  var btn=document.getElementById('faqMore'),extra=document.getElementById('faqExtra'),label=btn.querySelector('.more-btn__label');
+  btn.addEventListener('click',function(){
+    var open=extra.hidden;
+    extra.hidden=!open;
+    btn.setAttribute('aria-expanded',String(open));
+    label.textContent=open?'閉じる':'もっと見る';
+    if(!open)document.getElementById('faq').scrollIntoView({behavior:'smooth'});
+  });
+})();
+
+// 製品情報：アコーディオン
+document.querySelectorAll('.info__q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.closest('.info__item'),open=item.classList.toggle('is-open');
+    q.setAttribute('aria-expanded',String(open));
+  });
+});
+// 「製品情報」リンクで用法・用量を開く
+document.querySelectorAll('[data-open-info]').forEach(function(a){
+  a.addEventListener('click',function(){
+    var item=document.getElementById('infoDose');
+    item.classList.add('is-open');item.querySelector('.info__q').setAttribute('aria-expanded','true');
+  });
+});
+
+// 追従CTA：FV通過後に表示、購入セクション〜フッターでは非表示
+(function(){
+  var cta=document.getElementById('fixedCta'),fv=document.getElementById('fv'),buy=document.getElementById('buy');
+  function update(){
+    var past=fv.getBoundingClientRect().bottom<0;
+    var r=buy.getBoundingClientRect(),inBuy=r.top<window.innerHeight&&r.bottom>0;
+    var atEnd=window.innerHeight+window.scrollY>=document.body.scrollHeight-200;
+    cta.classList.toggle('is-show',past&&!inBuy&&!atEnd);
+  }
+  window.addEventListener('scroll',update,{passive:true});update();
+})();
+
+// CM：クリックでYouTubeを読み込み
+(function(){
+  var box=document.getElementById('cmPlayer'),btn=box.querySelector('button');
+  btn.addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/6HVN2KaYYvw?autoplay=1&rel=0&playsinline=1';
+    f.title='3AマグネシアS テレビCM';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true;
+    box.replaceChildren(f);
+  });
+})();
+
+// PC左メニュー：現在地ハイライト
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.side__nav a[href^="#"]'));
+  if(!links.length||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting)return;
+      links.forEach(function(a){a.classList.toggle('is-current',a.getAttribute('href')==='#'+en.target.id)});
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)io.observe(t)});
+})();
+
+// セルフチェック：当てはまる数を表示
+(function(){
+  var boxes=document.querySelectorAll('#checkList input'),out=document.getElementById('checkCount');
+  function update(){
+    var n=0;boxes.forEach(function(b){if(b.checked)n++});
+    out.innerHTML=n?'<b>'+n+'</b>個 当てはまりました':'ひとつでも当てはまったら…';
+  }
+  boxes.forEach(function(b){b.addEventListener('change',update)});
+})();
+</script>
+</body>
+</html>
